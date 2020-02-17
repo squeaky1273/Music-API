@@ -1,0 +1,1 @@
+I plan to create an API that connects song names with the lyrics and the name of the artist(s).
