@@ -1,10 +1,11 @@
-# Music API
+# 
 
-## Description
+## Music API
+### Description
 
 A music API application that matches the name of songs to the artist that they belong to. Songs are also matched to specific albums from a particular artist.
 
-## Installation
+### Installation
 
 First run:
 ```js
@@ -16,17 +17,27 @@ Then run:
 npm start
 ```
 
-## Built With
+### Built With
 
 * Javascript
 * Mongoose
-* Node
+* Node.js
 
-## Author(s)
+## Using The API
+### Create
+
+### Read
+
+### Update
+
+### Delete
+
+## Formalities
+### Author(s)
 
 Padyn Riddell - 
 
-## Acknowledgements
+### Acknowledgements
 
 * God - Thank you for giving the ability to have opportunties to build code and go to school.
 * Mom & family - Thank you for beliving in me and being encouraging.

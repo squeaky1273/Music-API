@@ -18,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/squeaky1273/Music-API/issues"
   },
-  "homepage": "https://github.com/squeaky1273/Music-API#readme"
+  "homepage": "https://github.com/squeaky1273/Music-API#readme",
+  "dependencies": {
+    "dotenv": "^8.2.0"
+  }
 }
