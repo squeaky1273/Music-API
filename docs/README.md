@@ -32,10 +32,28 @@ npm start
 
 ### Delete
 
+## Authentication
+### Register
+
+```js
+username: String,
+password: Password
+```
+
+### Log in
+
+```js
+username: String,
+password: Password
+```
+
+### Log out
+
+
 ## Formalities
 ### Author(s)
 
-Padyn Riddell - 
+Padyn Riddell - <i>Initial work</i> - Make School student and BEW concentration
 
 ### Acknowledgements
 
