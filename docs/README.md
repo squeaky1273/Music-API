@@ -24,13 +24,51 @@ npm start
 * Node.js
 
 ## Using The API
-### Create
+### Get About Page
 
-### Read
+```js
+{
+    message: ''
+}
+```
 
-### Update
 
-### Delete
+### Get All Artists
+
+```js
+[
+    {
+        name: 'Ariana Grande',
+        active: 'yes',
+        id: 123456789
+    }
+]
+```
+
+### Get a Single Artist
+
+```js
+{
+    name: 'Ariana Grande',
+    active: 'yes',
+    id: 123456789
+}
+```
+
+### Create Artist
+
+```js
+name: string,
+active: string
+```
+
+### Update Artist
+
+TODO
+
+### Delete Artist
+
+TODO
 
 ## Authentication
 ### Register
@@ -49,6 +87,7 @@ password: Password
 
 ### Log out
 
+TODO
 
 ## Formalities
 ### Author(s)

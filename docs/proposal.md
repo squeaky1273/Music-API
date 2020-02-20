@@ -1,1 +1,1 @@
-I plan to create an API that connects song names with the lyrics and the name of the artist(s).
+I plan to create an API that connects song names with the name of the correlating artist(s). Lyrics may be added in the future.

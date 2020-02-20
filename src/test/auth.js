@@ -20,4 +20,43 @@ after((done) => {
 
 describe('## Auth', () => {
   // TODO: Implement tests.
+  afterEach((done) => {
+    User.findOneAndRemove({username: 'testuser'})
+      .then(() => done())
+  })
+
+  it('should be able to sign up', (done) => {
+    chai.request(app)
+      .post('/auth/sign-up')
+      .send(sampleUser)
+      .then(res => {
+        assert.equal(res.status, 200)
+        assert.exists(res.body.jwttoken)
+
+        User.find({username: 'testuser'}).then(result => {
+          assert.equal(result.length, 1)
+        })
+        return done()
+      }).catch(err => {
+        return done(err)
+      })
+  })
+
+  it('should be able to log in', (done) => {
+    let user = new User(sampleUser)
+    user.save().then(savedUser => {
+      chai.request(app)
+        .post('/auth/login')
+        .send(sampleUser)
+        .then(res => {
+          console.log(res.body)
+          assert.equal(res.status, 200)
+          assert.exists(res.body.jwttoken)
+          return done()
+        }).catch(err => {
+          console.log(err)
+          return done(err)
+        })
+    })
+  })
 });
