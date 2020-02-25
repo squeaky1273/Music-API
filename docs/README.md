@@ -3,7 +3,7 @@
 ## Music API
 ### Description
 
-A music API application that matches the name of songs to the artist that they belong to. Songs are also matched to specific albums from a particular artist.
+A music API application that matches the name of songs to the artist that they belong to.
 
 ### Installation
 

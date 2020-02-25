@@ -6,6 +6,7 @@ const Schema = mongoose.Schema;
 const SongSchema = new Schema({
   title: { type: String },
   lyrics: { type: String },
+  released: { type: String },
   album: { type: String }
 })
 

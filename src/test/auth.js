@@ -18,6 +18,11 @@ after((done) => {
   done();
 });
 
+sampleUser = {
+  username: 'testuser',
+  password: 'password'
+}
+
 describe('## Auth', () => {
   // TODO: Implement tests.
   afterEach((done) => {
