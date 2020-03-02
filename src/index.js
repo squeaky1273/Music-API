@@ -11,7 +11,7 @@ const router = require('./controllers/artists.js');
 mongoose.Promise = Promise;
 
 // connect to mongo db
-const mongoUri = process.env.MONGO_URI;
+const mongoUri = process.env.MONGODB_URI;
 mongoose.connect(
   mongoUri,
   { server: { socketOptions: { keepAlive: 1 } } }
