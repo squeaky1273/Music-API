@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const util = require('util');
-const port = 3000;
+const port = process.env.PORT;
 require('dotenv').config();
 
 const app = require('./config/express');
@@ -11,7 +11,7 @@ const router = require('./controllers/artists.js');
 mongoose.Promise = Promise;
 
 // connect to mongo db
-const mongoUri = process.env.MONGO_HOST;
+const mongoUri = process.env.MONGO_URI;
 mongoose.connect(
   mongoUri,
   { server: { socketOptions: { keepAlive: 1 } } }
@@ -19,6 +19,9 @@ mongoose.connect(
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${mongoUri}`);
 });
+
+// const mongo_uri = process.env.MONGODB_URI
+// mongoose.connect(mongo_uri)
 
 // # TODO: Any additional config changes belong here.
 var checkAuth = (req, res, next) => {
@@ -46,9 +49,9 @@ app.use(router);
 
 // module.parent check is required to support mocha watch
 // src: https://github.com/mochajs/mocha/issues/1912
-app.listen(port, () => {
-  console.info(`server started on port ${port}! Click to view: http://localhost:${port}`);  // eslint-disable-line no-console
-});
+// app.listen(port, () => {
+//   console.info(`server started on port ${port}! Click to view: http://localhost:${port}`);  // eslint-disable-line no-console
+// });
 // }
-
+app.listen(port)
 module.exports = app;

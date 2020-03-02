@@ -11,7 +11,7 @@ router.post('/create', (req, res) => {
     })
 })
 
-// GET list of Seasons
+// GET list of Songs
 router.get('/', (req, res) => {
   Song.find().then(result => {
     res.json(result);

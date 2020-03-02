@@ -1,30 +1,38 @@
-const express = require('express')
+const express = require('express');
 
-const Artist = require('../models/artist.js')
+const Artist = require('../models/artist.js');
+const User = require('../models/user.js');
 
 const router = express.Router(); // eslint-disable-line new-cap
 
 // GET /api/artist
 router.get('/', (req, res) => {
-  Artist.find().then(artists => {
+  Artist.find().lean().then(artists => {
     res.send({ artists })
   })
 })
 
 // TODO: Add more routes.
 // GET by ID
-router.get('/api/artist/:id', (req, res) => {
-  Artist.findById(req.params.id, (err, artist) => {
-    res.send({ artist })
-  })  
+router.get('/:id', (req, res) => {
+  Artist.findOne({
+      _id: req.params.id
+    }).populate('song').lean()
+    .then(artist => {
+      res.json(artist);
+    })
 })
 
 // POST /api/artist
 router.post('/api/artist/new', (req, res) => {
+  if (!req.user) {
+    res.send({err: 'Need to be logged in' })
+  } else {
   Artist.create(req.body)
     .then(function(artist) {
       res.send(artist)
     })
+  }
 })
 
 // PUT
