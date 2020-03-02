@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcryptjs');
 const util = require('util');
 const port = 3000;
 require('dotenv').config();
 
 const app = require('./config/express');
-const router = require('./controllers/thing.js');
+const router = require('./controllers/artists.js');
 
 mongoose.Promise = Promise;
 
@@ -45,11 +46,9 @@ app.use(router);
 
 // module.parent check is required to support mocha watch
 // src: https://github.com/mochajs/mocha/issues/1912
-if (!module.parent) {
-  // listen on port config.port
-  module.exports = app.listen(port, () => {
-    console.log(`And the winner is: ${port}`);
+app.listen(port, () => {
+  console.info(`server started on port ${port}! Click to view: http://localhost:${port}`);  // eslint-disable-line no-console
 });
-}
+// }
 
 module.exports = app;

@@ -87,7 +87,7 @@ password: Password
 
 ### Log out
 
-TODO
+Send a GET request to http://localhost:3000/logout
 
 ## Formalities
 ### Author(s)

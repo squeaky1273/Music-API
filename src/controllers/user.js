@@ -1,6 +1,7 @@
 const express = require('express');
 const jwt = require('jsonwebtoken');
-const User = require('.../models/user.js')
+const User = require('../models/user.js');
+const bcrypt = require("bcryptjs");
 const router = express.Router(); // eslint-disable-line new-cap
 
 // TODO: Add routes.

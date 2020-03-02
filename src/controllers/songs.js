@@ -1,28 +1,28 @@
-const Artist = require('../models/artist');
-const Song = require('../models/song');
+const express = require('express')
+const router = express.Router(); // eslint-disable-line new-cap
 
-module.exports = function (app) {
-    // CREATE Song
-    app.post("/posts/:postId/songs", function (req, res) {
-        const song = new Song(req.body);
-        song
-            .save()
-            .then(song => {
-                return Promise.all([
-                    Artist.findById(req.params.postId)
-                ]);
-            })
-            .then(([artist, user]) => {
-                artist.songs.unshift(song);
-                return Promise.all([
-                    artist.save()
-                ]);
-            })
-            .then(post => {
-                res.redirect(`/posts/${req.params.artistId}`);
-            })
-            .catch(err => {
-                console.log(err);
-            });
-    });
-};
+const Song = require('../models/songs.js')
+
+// POST new Song
+router.post('/create', (req, res) => {
+    const season = new Season(req.body)
+    season.save().then(result => {
+        res.json(result)
+    })
+})
+
+// GET list of Seasons
+router.get('/', (req, res) => {
+  Song.find().then(result => {
+    res.json(result);
+  })
+})
+
+// GET specific Song
+router.get('/:id', (req, res) => {
+  Song.findOne({_id: req.params.id}).then(result => {
+    res.json(result);
+  })
+})
+
+module.exports = router

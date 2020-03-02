@@ -1,6 +1,6 @@
 const express = require('express')
 
-const Thing = require('../models/artist.js')
+const Artist = require('../models/artist.js')
 
 const router = express.Router(); // eslint-disable-line new-cap
 
@@ -34,6 +34,13 @@ router.put('/api/artist/:id', (req, res) => {
   Artist.findOneAndUpdate(filter, update, {
     new: true
   })
+  .then(function(artist) {
+    return res.send(artist)
+  })
+});
+//DELETE by ID
+router.delete('/api/artist/:id', (req, res) => {
+  Artist.findByIdAndRemove(req.params.id)
   .then(function(artist) {
     return res.send(artist)
   })

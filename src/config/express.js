@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const routes = require('../controllers/index.js');
+const bcrypt = require("bcryptjs");
 
 const app = express();
 

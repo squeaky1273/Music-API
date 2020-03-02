@@ -1,14 +1,15 @@
-
+const path = require('path');
 const express = require('express');
-const thingRoutes = require('./thing.js');
-const authRoutes = require('./auth.js');
+const bcrypt = require("bcryptjs");
+const artistRoutes = require('./artists.js');
+const userRoutes = require('./user.js');
 
 const router = express.Router(); // eslint-disable-line new-cap
 
 // TODO: Change to your model.
 
-router.use('/thing', thingRoutes);
+router.use('/artists', artistRoutes);
 
-router.use('/auth', authRoutes);
+router.use('/user', userRoutes);
 
 module.exports = router;

@@ -1,4 +1,4 @@
-const app = require("../index.js");
+const app = require("../src/index.js");
 const mongoose = require('mongoose');
 const chai = require('chai'); // eslint-disable-line import/newline-after-import
 const chaiHttp = require("chai-http");
@@ -23,7 +23,7 @@ sampleUser = {
   password: 'password'
 }
 
-describe('## Auth', () => {
+describe('User Auth', () => {
   // TODO: Implement tests.
   afterEach((done) => {
     User.findOneAndRemove({username: 'testuser'})
@@ -32,7 +32,7 @@ describe('## Auth', () => {
 
   it('should be able to sign up', (done) => {
     chai.request(app)
-      .post('/auth/sign-up')
+      .post('/user/sign-up')
       .send(sampleUser)
       .then(res => {
         assert.equal(res.status, 200)
@@ -51,7 +51,7 @@ describe('## Auth', () => {
     let user = new User(sampleUser)
     user.save().then(savedUser => {
       chai.request(app)
-        .post('/auth/login')
+        .post('/user/login')
         .send(sampleUser)
         .then(res => {
           console.log(res.body)
