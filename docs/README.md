@@ -40,7 +40,14 @@ npm start
     {
         name: 'Ariana Grande',
         active: 'yes',
+        songs: 'Problem', 'Thank you, next',
         id: 123456789
+    };
+    {
+        name: 'Whitney Houston',
+        active: 'no',
+        songs: 'I Wanna Dance with Somebody', 'Greatest Love of All',
+        id: 124356789
     }
 ]
 ```
@@ -51,6 +58,7 @@ npm start
 {
     name: 'Ariana Grande',
     active: 'yes',
+    songs: 'Problem', 'Thank you, next',
     id: 123456789
 }
 ```
@@ -69,6 +77,82 @@ TODO
 ### Delete Artist
 
 TODO
+
+### Get All Artists
+
+```js
+[
+    {
+        name: 'Ariana Grande',
+        active: 'yes',
+        songs: 'Problem', 'Thank you, next',
+        id: 123456789
+    };
+    {
+        name: 'Whitney Houston',
+        active: 'no',
+        songs: 'I Wanna Dance with Somebody', 'Greatest Love of All',
+        id: 124356789
+    }
+]
+```
+
+### Get a Single Artist
+
+```js
+{
+    name: 'Ariana Grande',
+    active: 'yes',
+    songs: 'Problem', 'Thank you, next',
+    id: 123456789
+}
+```
+
+### Create Song
+
+```js
+name: string,
+active: string
+```
+
+### Update Song
+
+TODO
+
+### Delete Song
+
+TODO
+
+### Get All Songs
+
+```js
+[
+    {
+        title: 'Thank you, next',
+        lyrics: ,
+        released: ,
+        album: 'Thank you, next',
+        artist: Ariana Grande
+    };
+    {
+        name: 'Whitney Houston',
+        active: 'no',
+        songs: 'I Wanna Dance with Somebody', 'Greatest Love of All',
+        id: 124356789
+    }
+]
+```
+
+### Get a Single Song
+
+```js
+{
+    name: 'Ariana Grande',
+    active: 'yes',
+    songs: 'Problem', 'Thank you, next',
+    id: 123456789
+}
+```
 
 ## Authentication
 ### Register

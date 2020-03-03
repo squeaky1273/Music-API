@@ -5,8 +5,8 @@ const Song = require('../models/songs.js')
 
 // POST new Song
 router.post('/create', (req, res) => {
-    const season = new Season(req.body)
-    season.save().then(result => {
+    const song = new Song(req.body)
+    song.save().then(result => {
         res.json(result)
     })
 })

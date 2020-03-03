@@ -5,7 +5,8 @@ const Schema = mongoose.Schema;
 
 const ArtistSchema = new Schema({
   name: { type: String, required: true },
-  active: { type: String }
+  active: { type: String },
+  songs: [{ type: Schema.Types.ObjectId, ref: "Song" }]
 })
 
 Artist = mongoose.model('Artist', ArtistSchema);

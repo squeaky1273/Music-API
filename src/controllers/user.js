@@ -7,6 +7,7 @@ const router = express.Router(); // eslint-disable-line new-cap
 // TODO: Add routes.
 // SIGN UP
 router.post('/signup', (req, res) => {
+  console.log("Here now")
     const user = new User(req.body)
     user.save().then(user => {
       const token = jwt.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "60 days" });
@@ -49,9 +50,9 @@ router.post('/signup', (req, res) => {
   })
   
   // LOGOUT
-  router.get('/logout', (req, res) => {
+  router.post('/logout', (req, res) => {
     res.clearCookie('nToken');
-    res.redirect('/');
+    res.redirect('/artists');
   })
   
 

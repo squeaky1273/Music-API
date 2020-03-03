@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const util = require('util');
-const port = process.env.PORT;
+// const port = process.env.PORT;
+const port = 3000;
 require('dotenv').config();
 
 const app = require('./config/express');
-const router = require('./controllers/artists.js');
+// const router = require('./controllers/artists.js');
 
 mongoose.Promise = Promise;
 
@@ -24,34 +25,39 @@ mongoose.connection.on('error', () => {
 // mongoose.connect(mongo_uri)
 
 // # TODO: Any additional config changes belong here.
-var checkAuth = (req, res, next) => {
-  console.log("Checking authentication");
-  if (typeof req.headers.jwttoken === "undefined" || req.headers.jwttoken === null) {
-    req.user = null;
-    next();
-  } else {
-    var token = req.headers.jwttoken;
-    jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
-      if (err) {
-          console.log('Error during authentication: Invalid signature')
-          req.user = null;
-      } else {
-          req.user = decodedToken;
-      }
-      next();
-    })
-  }
-};
-app.use(checkAuth);
+// //Check auth - headers
+// let checkAuth = (req, res, next) => {
+//   const authorization = req.headers['authorization']
+//   console.log("Checking authentication");
+//   console.log(authorization)
+//   if (typeof req.headers.authorization === "undefined" || req.headers.authorization === null) {
+//     req.user = null;
+//     next();
+//   } else {
+//     const bearer = authorization.split(' ');
+//     let token = bearer[1];
+//     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
+//       if (err) {
+//           console.log('Error during authentication: Invalid signature')
+//           req.user = null;
+//       } else {
+//           req.user = decodedToken;
+//       }
+//       next();
+//     })
+//   }
+// };
+
+// app.use(checkAuth);
 
 // Routes
-app.use(router);
+// app.use(router);
 
 // module.parent check is required to support mocha watch
 // src: https://github.com/mochajs/mocha/issues/1912
-// app.listen(port, () => {
-//   console.info(`server started on port ${port}! Click to view: http://localhost:${port}`);  // eslint-disable-line no-console
-// });
-// }
-app.listen(port)
+app.listen(port, () => {
+  console.info(`server started on port ${port}! Click to view: http://localhost:${port}`);  // eslint-disable-line no-console
+});
+
+// app.listen(port)
 module.exports = app;
