@@ -5,22 +5,21 @@ const User = require('../models/user.js');
 
 const router = express.Router(); // eslint-disable-line new-cap
 
-// GET /api/artist
-router.get('/all', (req, res) => {
+// GET all artists
+router.get('/', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
   } else {
   Artist.find().lean()
-  .then(artists => {
-    res.json({ artists })
+  .then(results => {
+    res.json({ results })
   })
   .catch((err) => {
       throw err.message
   });
 }});
 
-// TODO: Add more routes.
-// GET by ID
+// GET one artist by ID
 router.get('/:id', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -28,39 +27,50 @@ router.get('/:id', (req, res) => {
   Artist.findOne({
       _id: req.params.id
     }).populate('song').lean()
-    .then(artist => {
-      res.json(artist);
+    .then(result => {
+      res.json(result);
     })
     .catch((err) => {
       throw err.message
   });
 }});
 
-// POST/CREATE /api/artist
-router.post('/api/new', (req, res) => {
-  // console.log('is it here?')
-  if (!req.user) {
-    res.send({err: 'Need to be logged in' })
-  } else {
-  Artist.create(req.body)
-    .then(function(artist) {
-      res.json(artist)
-    })
-    .catch((err) => {
-      throw err.message
-    });
-  }
-})
+// // POST create new artist
+// router.post('/api/new', (req, res) => {
+//   // console.log('is it here?')
+//   if (!req.user) {
+//     res.send({err: 'Need to be logged in' })
+//   } else {
+//   Artist.create(req.body)
+//     .then(function(artist) {
+//       res.json(artist)
+//     })
+//     .catch((err) => {
+//       throw err.message
+//     });
+//   }
+// })
 
-// PUT/UPDATE
-router.put('/api/artist/:id/update', (req, res) => { 
+// POST new Artist
+router.post('/api/new', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
   } else {
-  Artist.findOneAndUpdate(req.params.id, {
+  const artist = new Artist(req.body)
+  artist.save().then(result => {
+      res.json(result)
+  })
+}});
+
+// PUT update artist
+router.put('/:id', (req, res) => { 
+  if (!req.user) {
+    res.send({err: 'Need to be logged in' })
+  } else {
+  Artist.findIdAndUpdate(req.params.id, {
     name: req.body.name,
     active: req.body.active,
-    songs: req.body.songs
+    // songs: req.body.songs
   })
   .then((artist) => {
     return res.json(artist)
@@ -70,18 +80,19 @@ router.put('/api/artist/:id/update', (req, res) => {
   });
 }});
 
-//DELETE by ID
-router.delete('/api/artist/:id/delete', (req, res) => {
+// DELETE artist by ID
+router.delete("/:id", (req, res) => {
   if (!req.user) {
-    res.send({err: 'Need to be logged in' })
+    res.send({ err: 'Must be logged in' })
   } else {
-  Artist.findByIdAndRemove(req.params.id)
-  .then(function(artist) {
-    return res.json('Deleted')
-  })
-  .catch((err) => {
-    throw err.message
-  });
-}});
+    Artist.deleteOne( {_id: req.params.id} )
+      .then(function(err, artist) {
+        res.send('Entry deleted');
+        })
+    .catch(err => {
+      console.log(err.message);
+    });
+  }
+});
 
-module.exports = router;
+module.exports = router

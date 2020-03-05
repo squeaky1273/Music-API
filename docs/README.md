@@ -1,11 +1,10 @@
-# 
+# Music API
 
-## Music API
-### Description
+## Description
 
 A music API application that matches the name of songs to the artist that they belong to.
 
-### Installation
+## Installation
 
 First run:
 ```js
@@ -17,7 +16,7 @@ Then run:
 npm start
 ```
 
-### Built With
+## Built With
 
 * Javascript
 * Mongoose
@@ -31,7 +30,6 @@ npm start
     message: ''
 }
 ```
-
 
 ### Get All Artists
 
@@ -67,6 +65,8 @@ Example Output:
 
 ### Create Artist
 
+Send a POST request with the following info:
+
 ```js
 name: string,
 active: string
@@ -74,26 +74,50 @@ active: string
 
 ### Update Artist
 
-TODO
+Send a PUT request with the following info:
+
+```js
+id: string
+```
 
 ### Delete Artist
 
-TODO
-
-### Create Song
+Send a DELETE request with the following info:
 
 ```js
+id: string,
 name: string,
 active: string
 ```
 
+<!-- ### Create Song
+
+```js
+name: string,
+released: string,
+album: string,
+artist: string
+```
+
 ### Update Song
 
-TODO
+Send a PUT request with the following info:
+
+```js
+id: string
+```
 
 ### Delete Song
 
-TODO
+Send a DELETE request with the following info:
+
+```js
+id: string,
+name: string,
+released: string,
+album: string,
+artist: string
+```
 
 ### Get All Songs
 
@@ -125,10 +149,12 @@ Example Output:
     album: 'Thank you, next',
     artist: 'Ariana Grande'
 };
-```
+``` -->
 
 ## Authentication
-### Register
+### Sign Up
+
+Send a POST request to http://localhost:3000/sign-up with the following info:
 
 ```js
 username: String,
@@ -136,6 +162,10 @@ password: Password
 ```
 
 ### Log in
+
+To log in, send a POST request to http://localhost:3000/login
+
+Use these headers with the data type:
 
 ```js
 username: String,

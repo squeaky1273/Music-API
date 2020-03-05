@@ -1,7 +1,7 @@
 const express = require('express')
 const router = express.Router(); // eslint-disable-line new-cap
 
-const Song = require('../models/songs.js')
+const Song = require('./songs.js')
 
 // GET list of Songs
 router.get('/all', (req, res) => {
@@ -34,22 +34,22 @@ router.post('/api/new', (req, res) => {
   })
 }});
 
-// POST /api/artist
-router.post('/api/song/new', (req, res) => {
-  if (!req.user) {
-    res.send({err: 'Need to be logged in' })
-  } else {
-  Song.create(req.body)
-    .then((song) => {
-      res.json(song)
-    })
-    .catch((err) => {
-      throw err.message
-    });
-  }
-})
+// // POST create new song
+// router.post('/api/song/new', (req, res) => {
+//   if (!req.user) {
+//     res.send({err: 'Need to be logged in' })
+//   } else {
+//   Song.create(req.body)
+//     .then((song) => {
+//       res.json(song)
+//     })
+//     .catch((err) => {
+//       throw err.message
+//     });
+//   }
+// })
 
-// PUT/UPDATE
+// PUT update song
 router.put('/api/song/:id/update', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -59,7 +59,7 @@ router.put('/api/song/:id/update', (req, res) => {
     lyrics: req.body.lyrics,
     released: req.body.released,
     album: req.body.album,
-    artist: req.body.artist
+    // artist: req.body.artist
   })
   .then((song) => {
     return res.json(song)

@@ -1,11 +1,12 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const autopopulate = require('../utils/autopopulate')
 
 // TODO: Replace this with actual model
 
 const ArtistSchema = new Schema({
   name: { type: String, required: true },
-  active: { type: String },
+  active: { type: String , required: true },
   songs: [{ type: Schema.Types.ObjectId, ref: "Song" }]
 })
 
