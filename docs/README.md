@@ -23,14 +23,6 @@ npm start
 * Node.js
 
 ## Using The API
-### Get About Page
-
-```js
-{
-    message: ''
-}
-```
-
 ### Get All Artists
 
 Example Output:
@@ -39,14 +31,16 @@ Example Output:
     {
         name: 'Ariana Grande',
         active: 'yes',
+        associated_genre: 'pop',
         songs: 'Problem', 'Thank you, next',
-        id: 123456789
+        id: we4245rdffer3fg35r
     };
     {
         name: 'Whitney Houston',
         active: 'no',
+        associated_genre: 'r&b',
         songs: 'I Wanna Dance with Somebody', 'Greatest Love of All',
-        id: 124356789
+        id: er3r4sdfgj5ks8fn5g
     }
 ]
 ```
@@ -58,8 +52,9 @@ Example Output:
 {
     name: 'Ariana Grande',
     active: 'yes',
+    associated_genre: 'pop',
     songs: 'Problem', 'Thank you, next',
-    id: 123456789
+    id: we4245rdffer3fg35r
 }
 ```
 
@@ -69,7 +64,8 @@ Send a POST request with the following info:
 
 ```js
 name: string,
-active: string
+active: string,
+associated_genre: string
 ```
 
 ### Update Artist
@@ -86,40 +82,9 @@ Send a DELETE request with the following info:
 
 ```js
 id: string,
-name: string,
-active: string
 ```
 
-<!-- ### Create Song
-
-```js
-name: string,
-released: string,
-album: string,
-artist: string
-```
-
-### Update Song
-
-Send a PUT request with the following info:
-
-```js
-id: string
-```
-
-### Delete Song
-
-Send a DELETE request with the following info:
-
-```js
-id: string,
-name: string,
-released: string,
-album: string,
-artist: string
-```
-
-### Get All Songs
+<!-- ### Get All Songs
 
 Example Output:
 ```js
@@ -149,6 +114,31 @@ Example Output:
     album: 'Thank you, next',
     artist: 'Ariana Grande'
 };
+``` -->
+
+
+<!-- ### Create Song
+
+```js
+name: string,
+released: string,
+album: string
+```
+
+### Update Song
+
+Send a PUT request with the following info:
+
+```js
+id: string
+```
+
+### Delete Song
+
+Send a DELETE request with the following info:
+
+```js
+id: string,
 ``` -->
 
 ## Authentication

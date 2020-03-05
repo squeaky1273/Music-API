@@ -6,7 +6,8 @@ const User = require('../models/user.js');
 const router = express.Router(); // eslint-disable-line new-cap
 
 // GET all artists
-router.get('/', (req, res) => {
+// http://localhost:3000/artists/all
+router.get('/all', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
   } else {
@@ -20,6 +21,7 @@ router.get('/', (req, res) => {
 }});
 
 // GET one artist by ID
+// http://localhost:3000/artists/[id]
 router.get('/:id', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -35,45 +37,28 @@ router.get('/:id', (req, res) => {
   });
 }});
 
-// // POST create new artist
-// router.post('/api/new', (req, res) => {
-//   // console.log('is it here?')
-//   if (!req.user) {
-//     res.send({err: 'Need to be logged in' })
-//   } else {
-//   Artist.create(req.body)
-//     .then(function(artist) {
-//       res.json(artist)
-//     })
-//     .catch((err) => {
-//       throw err.message
-//     });
-//   }
-// })
-
 // POST new Artist
+// http://localhost:3000/artists/api/new
 router.post('/api/new', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
   } else {
   const artist = new Artist(req.body)
+  artist.added_by = req.user_id
   artist.save().then(result => {
       res.json(result)
   })
 }});
 
 // PUT update artist
-router.put('/:id', (req, res) => { 
+// http://localhost:3000/artists/[id]/update
+router.put('/:id/update', (req, res) => { 
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
   } else {
-  Artist.findIdAndUpdate(req.params.id, {
-    name: req.body.name,
-    active: req.body.active,
-    // songs: req.body.songs
-  })
+  Artist.findByIdAndUpdate(req.params.id, req.body, {new: true})
   .then((artist) => {
-    return res.json(artist)
+    return res.send(artist);
   })
   .catch((err) => {
     throw err.message
@@ -81,6 +66,7 @@ router.put('/:id', (req, res) => {
 }});
 
 // DELETE artist by ID
+// http://localhost:3000/[id]
 router.delete("/:id", (req, res) => {
   if (!req.user) {
     res.send({ err: 'Must be logged in' })

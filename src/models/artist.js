@@ -7,6 +7,7 @@ const autopopulate = require('../utils/autopopulate')
 const ArtistSchema = new Schema({
   name: { type: String, required: true },
   active: { type: String , required: true },
+  associated_genre: { type: String , required: true },
   songs: [{ type: Schema.Types.ObjectId, ref: "Song" }]
 })
 
