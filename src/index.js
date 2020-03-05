@@ -7,7 +7,8 @@ const port = 3000;
 require('dotenv').config();
 
 const app = require('./config/express');
-// const router = require('./controllers/artists.js');
+const router = require('./controllers/index.js');
+
 // Set db
 require('./data/db');
 

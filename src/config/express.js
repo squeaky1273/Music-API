@@ -65,8 +65,8 @@ const checkAuth = (req, res, next) => {
   
   app.use(checkAuth);
   
-  // Routes
-  app.use('/', router);
+// Routes
+app.use('/', router);
 // Mount all routes on /api path.
 // app.use('/api', routes);
 
