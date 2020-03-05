@@ -6,10 +6,14 @@ const User = require('../models/user.js');
 const router = express.Router(); // eslint-disable-line new-cap
 
 // GET /api/artist
-router.get('/', (req, res) => {
-  Artist.find().lean().then(artists => {
-    res.send({ artists })
+router.get('/all', (req, res) => {
+  Artist.find().lean()
+  .then(artists => {
+    res.json({ artists })
   })
+  .catch((err) => {
+      throw err.message
+  });
 })
 
 // TODO: Add more routes.
@@ -21,37 +25,51 @@ router.get('/:id', (req, res) => {
     .then(artist => {
       res.json(artist);
     })
-})
+    .catch((err) => {
+      throw err.message
+  });
+});
 
-// POST /api/artist
-router.post('/api/artist/new', (req, res) => {
+// POST/CREATE /api/artist
+router.post('/api/new', (req, res) => {
+  // console.log('is it here?')
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
   } else {
   Artist.create(req.body)
     .then(function(artist) {
-      res.send(artist)
+      res.json(artist)
     })
+    .catch((err) => {
+      throw err.message
+    });
   }
 })
 
-// PUT
-router.put('/api/artist/:id', (req, res) => {
-  const filter = { _id: req.params.id }
-  const update = req.body 
-  Artist.findOneAndUpdate(filter, update, {
-    new: true
+// PUT/UPDATE
+router.put('/api/artist/:id', (req, res) => { 
+  Artist.findOneAndUpdate(req.params.id, {
+    name: req.body.name,
+    active: req.body.active,
+    songs: req.body.songs
   })
-  .then(function(artist) {
-    return res.send(artist)
+  .then((artist) => {
+    return res.json(artist)
   })
+  .catch((err) => {
+    throw err.message
+  });
 });
+
 //DELETE by ID
 router.delete('/api/artist/:id', (req, res) => {
   Artist.findByIdAndRemove(req.params.id)
   .then(function(artist) {
-    return res.send(artist)
+    return res.json('Deleted')
   })
+  .catch((err) => {
+    throw err.message
+  });
 });
 
 module.exports = router;

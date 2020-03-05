@@ -8,6 +8,8 @@ require('dotenv').config();
 
 const app = require('./config/express');
 // const router = require('./controllers/artists.js');
+// Set db
+require('./data/db');
 
 mongoose.Promise = Promise;
 
@@ -20,38 +22,6 @@ mongoose.connect(
 mongoose.connection.on('error', () => {
   throw new Error(`unable to connect to database: ${mongoUri}`);
 });
-
-// const mongo_uri = process.env.MONGODB_URI
-// mongoose.connect(mongo_uri)
-
-// # TODO: Any additional config changes belong here.
-// //Check auth - headers
-// let checkAuth = (req, res, next) => {
-//   const authorization = req.headers['authorization']
-//   console.log("Checking authentication");
-//   console.log(authorization)
-//   if (typeof req.headers.authorization === "undefined" || req.headers.authorization === null) {
-//     req.user = null;
-//     next();
-//   } else {
-//     const bearer = authorization.split(' ');
-//     let token = bearer[1];
-//     jwt.verify(token, process.env.JWT_SECRET, (err, decodedToken) => {
-//       if (err) {
-//           console.log('Error during authentication: Invalid signature')
-//           req.user = null;
-//       } else {
-//           req.user = decodedToken;
-//       }
-//       next();
-//     })
-//   }
-// };
-
-// app.use(checkAuth);
-
-// Routes
-// app.use(router);
 
 // module.parent check is required to support mocha watch
 // src: https://github.com/mochajs/mocha/issues/1912

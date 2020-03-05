@@ -51,8 +51,9 @@ router.post('/signup', (req, res) => {
   
   // LOGOUT
   router.post('/logout', (req, res) => {
-    res.clearCookie('nToken');
+    res.clearCookie('token');
     res.redirect('/artists');
+    return res.send({status: 200, message:"Success: Logged out"});
   })
   
 

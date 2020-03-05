@@ -9,6 +9,16 @@ const ArtistSchema = new Schema({
   songs: [{ type: Schema.Types.ObjectId, ref: "Song" }]
 })
 
-Artist = mongoose.model('Artist', ArtistSchema);
+ArtistSchema.pre('save', (next) => {
+  // SET createdAt AND updatedAt
+  const now = new Date()
+  this.updatedAt = now
+  if (!this.createdAt) {
+      this.createdAt = now
+  };
+  next();
+});
+
+let Artist = mongoose.model('Artist', ArtistSchema);
 
 module.exports = Artist;

@@ -35,6 +35,7 @@ npm start
 
 ### Get All Artists
 
+Example Output:
 ```js
 [
     {
@@ -54,6 +55,7 @@ npm start
 
 ### Get a Single Artist
 
+Example Output:
 ```js
 {
     name: 'Ariana Grande',
@@ -78,36 +80,6 @@ TODO
 
 TODO
 
-### Get All Artists
-
-```js
-[
-    {
-        name: 'Ariana Grande',
-        active: 'yes',
-        songs: 'Problem', 'Thank you, next',
-        id: 123456789
-    };
-    {
-        name: 'Whitney Houston',
-        active: 'no',
-        songs: 'I Wanna Dance with Somebody', 'Greatest Love of All',
-        id: 124356789
-    }
-]
-```
-
-### Get a Single Artist
-
-```js
-{
-    name: 'Ariana Grande',
-    active: 'yes',
-    songs: 'Problem', 'Thank you, next',
-    id: 123456789
-}
-```
-
 ### Create Song
 
 ```js
@@ -125,33 +97,34 @@ TODO
 
 ### Get All Songs
 
+Example Output:
 ```js
 [
     {
         title: 'Thank you, next',
-        lyrics: ,
-        released: ,
+        released: 'November 3, 2018',
         album: 'Thank you, next',
-        artist: Ariana Grande
+        artist: 'Ariana Grande'
     };
     {
-        name: 'Whitney Houston',
-        active: 'no',
-        songs: 'I Wanna Dance with Somebody', 'Greatest Love of All',
-        id: 124356789
+        title: 'I Wanna Dance With Somebody',
+        released: 'May 2, 1987',
+        album: 'Whitney',
+        artist: 'Whitney Houstin'
     }
 ]
 ```
 
 ### Get a Single Song
 
+Example Output:
 ```js
 {
-    name: 'Ariana Grande',
-    active: 'yes',
-    songs: 'Problem', 'Thank you, next',
-    id: 123456789
-}
+    title: 'Thank you, next',
+    released: 'November 3, 2018',
+    album: 'Thank you, next',
+    artist: 'Ariana Grande'
+};
 ```
 
 ## Authentication

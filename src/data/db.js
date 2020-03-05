@@ -6,7 +6,8 @@ const url = "mongodb://localhost/music-api-db";
 mongoose.Promise = global.Promise;
 mongoose.connect(
   url,
-  { useNewUrlParser: true },
+  { useNewUrlParser: true,
+    useUnifiedTopology: true },
   function(err, db) {
     assert.equal(null, err);
     console.log("Connected successfully to database");
