@@ -6,12 +6,12 @@ const User = require('../models/user.js');
 const router = express.Router(); // eslint-disable-line new-cap
 
 // GET all artists
-// http://localhost:3000/artists/all
+// http://localhost:3000/api/artists/all
 router.get('/all', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
   } else {
-  Artist.find().lean()
+  Artist.find().populate('song')
   .then(results => {
     res.json({ results })
   })
