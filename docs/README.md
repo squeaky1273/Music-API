@@ -88,19 +88,13 @@ id: string,
 
 Example Output:
 ```js
+Ariana Grande
 [
     {
         title: 'Thank you, next',
         released: 'November 3, 2018',
-        album: 'Thank you, next',
-        artist: 'Ariana Grande'
+        album: 'Thank you, next'
     };
-    {
-        title: 'I Wanna Dance With Somebody',
-        released: 'May 2, 1987',
-        album: 'Whitney',
-        artist: 'Whitney Houstin'
-    }
 ]
 ```
 

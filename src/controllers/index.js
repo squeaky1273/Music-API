@@ -9,10 +9,17 @@ const router = express.Router(); // eslint-disable-line new-cap
 
 // TODO: Change to your model.
 
-router.use('/artists', artistRoutes);
+router.use('/api/artists', artistRoutes);
+router.use('/api/songs', songRoutes);
 
-router.use('/songs', songRoutes);
+router.use('/api/artists/:a_id/songs', function(req, res,
+next) {
+    next()
+    }, songRoutes
+    );
+
 
 router.use('/user', userRoutes);
+
 
 module.exports = router;

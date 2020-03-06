@@ -39,12 +39,13 @@ router.get('/:id', (req, res) => {
 
 // POST new Artist
 // http://localhost:3000/artists/api/new
-router.post('/api/new', (req, res) => {
+router.post('/new', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
   } else {
   const artist = new Artist(req.body)
   artist.added_by = req.user_id
+
   artist.save().then(result => {
       res.json(result)
   })
