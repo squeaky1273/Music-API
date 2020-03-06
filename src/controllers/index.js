@@ -18,6 +18,9 @@ next) {
     }, songRoutes
     );
 
+router.get('/', (req, res) => {
+    res.send('text')
+});
 
 router.use('/user', userRoutes);
 
