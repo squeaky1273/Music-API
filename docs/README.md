@@ -135,7 +135,7 @@ id: string,
 ## Authentication
 ### Sign Up
 
-Send a POST request to http://localhost:3000/sign-up with the following info:
+Send a POST request to https://musicsapi.herokuapp.com//users/sign-up with the following info:
 
 ```js
 username: String,
@@ -144,7 +144,7 @@ password: Password
 
 ### Log in
 
-To log in, send a POST request to http://localhost:3000/login
+To log in, send a POST request to https://musicsapi.herokuapp.com/users/login
 
 Use these headers with the data type:
 
@@ -155,7 +155,7 @@ password: Password
 
 ### Log out
 
-Send a GET request to http://localhost:3000/logout
+Send a GET request to https://musicsapi.herokuapp.com/users/logout
 
 ## Formalities
 ### Author(s)
