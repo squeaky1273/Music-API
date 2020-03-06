@@ -19,7 +19,7 @@ next) {
     );
 
 router.get('/', (req, res) => {
-    res.send('<div style="text-align: center><h1>WELCOME TO THE MUSIC API.</h1>'<h2>'Check the documentation here: <a href="https://aucoeur.github.io/rpdr_API/https://au.github.io/rpdr_API/</a></h2>"');
+    res.send('<div style="text-align: center"><h1>WELCOME TO THE MUSIC API.</h1><h2>Check the documentation here: <a href="https://squeaky1273.github.io/Music-API/#/">https://squeaky1273.github.io/Music-API/#/</a></h2>');
 });
 
 router.use('/user', userRoutes);
