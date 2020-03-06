@@ -2,8 +2,8 @@ const mongoose = require('mongoose');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcryptjs');
 const util = require('util');
-// const port = process.env.PORT;
-const port = 3000;
+const port = process.env.PORT;
+// const port = 3000;
 require('dotenv').config();
 
 const app = require('./config/express');

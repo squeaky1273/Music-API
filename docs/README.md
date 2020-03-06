@@ -53,8 +53,6 @@ Example Output:
     name: 'Ariana Grande',
     active: 'yes',
     associated_genre: 'pop',
-    songs: 'Problem', 'Thank you, next',
-    id: we4245rdffer3fg35r
 }
 ```
 
@@ -84,7 +82,7 @@ Send a DELETE request with the following info:
 id: string,
 ```
 
-<!-- ### Get All Songs
+### Get All Songs
 
 Example Output:
 ```js
@@ -102,16 +100,15 @@ Ariana Grande
 
 Example Output:
 ```js
+ssdvdbdvthfr45yu6y
 {
     title: 'Thank you, next',
     released: 'November 3, 2018',
     album: 'Thank you, next',
-    artist: 'Ariana Grande'
 };
-``` -->
+```
 
-
-<!-- ### Create Song
+### Create Song
 
 ```js
 name: string,
@@ -133,7 +130,7 @@ Send a DELETE request with the following info:
 
 ```js
 id: string,
-``` -->
+```
 
 ## Authentication
 ### Sign Up

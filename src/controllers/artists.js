@@ -21,7 +21,7 @@ router.get('/all', (req, res) => {
 }});
 
 // GET one artist by ID
-// http://localhost:3000/artists/[id]
+// http://localhost:3000/artists/id
 router.get('/:id', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -52,7 +52,7 @@ router.post('/new', (req, res) => {
 }});
 
 // PUT update artist
-// http://localhost:3000/artists/[id]/update
+// http://localhost:3000/artists/id/update
 router.put('/:id/update', (req, res) => { 
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -67,7 +67,7 @@ router.put('/:id/update', (req, res) => {
 }});
 
 // DELETE artist by ID
-// http://localhost:3000/[id]
+// http://localhost:3000/id
 router.delete("/:id", (req, res) => {
   if (!req.user) {
     res.send({ err: 'Must be logged in' })

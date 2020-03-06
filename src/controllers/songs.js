@@ -6,6 +6,7 @@ const Song = require('../models/song.js')
 const User = require('../models/user.js');
 
 // GET list of Songs
+// http://localhost:3000/api/artists/a_id/songs
 router.get('/all', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -16,6 +17,7 @@ router.get('/all', (req, res) => {
 }});
 
 // GET specific Song
+// http://localhost:3000/songs/id
 router.get('/:id', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -26,6 +28,7 @@ router.get('/:id', (req, res) => {
 }});
 
 // POST new Song
+// http://localhost:3000/api/artists/a_id/songs/new
 router.post('/new', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -48,6 +51,7 @@ router.post('/new', (req, res) => {
 });
 
 // PUT update song
+// http://localhost:3000/api/artist/a_id/songs/id/update
 router.put('/:id/update', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
@@ -64,6 +68,7 @@ router.put('/:id/update', (req, res) => {
 }});
 
 //DELETE by ID
+// http://localhost:3000/songs/id/delete
 router.delete('/:id/delete', (req, res) => {
   if (!req.user) {
     res.send({err: 'Need to be logged in' })
